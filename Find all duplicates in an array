@@ -1,0 +1,21 @@
+from collections import Counter
+class Solution:
+    def findDuplicates(self, nums: List[int]) -> List[int]:
+  
+# SOLUTION 1.)
+#         d = {}
+#         res = []
+#         for i in range(len(nums)):
+#             try:
+#                 d[nums[i]] += 1 
+#             except:
+#                 d[nums[i]] = 1
+        
+#         for i,v in d.items():
+#             if v == 2:
+#                 res.append(i)
+#         return res
+
+# SOLUTION 2.) 
+
+        return [index for index,value in Counter(nums).items() if value > 1]
