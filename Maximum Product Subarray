@@ -1,0 +1,47 @@
+import sys
+class Solution:
+    def maxProduct(self, nums: List[int]) -> int:
+        
+  ( SOLUTION 1 )
+
+        prod = 1
+        n = len(nums)
+        maxprod1 = -sys.maxsize-1
+        
+        for i in range(n):
+            
+            prod *= nums[i]
+            maxprod1 = max(maxprod1, prod)
+            if prod == 0:
+                prod = 1
+        
+        prod = 1
+        maxprod2 = -sys.maxsize-1
+        for i in range(n-1, -1, -1):
+            prod *= nums[i]
+            maxprod2 = max(maxprod2, prod)
+            if prod == 0:
+                prod = 1
+                
+        return max(maxprod1, maxprod2)
+
+
+     ( SOLUTION 2 )
+    #         n = len(nums)
+#         dp = [[-1]*(n) for i in range(n)]
+#         mx = -sys.maxsize-1
+        
+        
+#         for i in range(n):
+#             for j in range(n):
+                
+#                 if i >= j:
+#                     dp[i][j] = nums[i]
+#                 else:
+#                     dp[i][j] = dp[i][j-1]*nums[j]
+                    
+        
+#         for i in range(n):
+#             mx = max(mx, max(dp[i]))
+        
+#         return mx
