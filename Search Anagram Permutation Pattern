@@ -1,0 +1,35 @@
+MAX = 256
+def match(s, pat):
+    for i in range(MAX):
+        if s[i] != pat[i]:
+            return False
+    return True
+        
+def search(s, pat):
+    
+    m = len(s)
+    n = len(pat)
+    
+    countM = [0]*MAX
+    countW = [0]*MAX
+    
+    for i in range(n):
+        
+        countM[ord(s[i])] += 1 
+        countW[ord(pat[i])] += 1 
+        
+    for i in range(n, m):
+        
+        if match(countM,  countW):
+            print("Found at index at ",i-n)
+            
+        countW[ord(s[i])] += 1 
+        countW[ord(s[i-n])] -= 1 
+        
+    if match(countM, countW):
+        print("Found at index at ",m-n)
+
+
+s = "BACDGABCDA"
+p = "ABCD"
+search(s, p)
