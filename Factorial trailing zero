@@ -1,0 +1,9 @@
+class Solution:
+    def trailingZeroes(self, n: int) -> int:
+        
+        quotient = 0
+        fact = 5
+        while n >= fact:
+            quotient += n//fact
+            fact *= 5
+        return quotient
