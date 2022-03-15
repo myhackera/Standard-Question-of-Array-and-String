@@ -1,0 +1,26 @@
+def isValid(s):
+    
+    s = s.split('.')
+    if not len(s) == 4:
+        return 0
+        
+    for i in s:
+        try:
+            int(i) # check for 0
+        except:
+            return 0
+            
+        if len(i) > 3: # check for 2222
+            return 0
+            
+        if len(i) > 1 and i.startswith("0"): # check for "01"
+            return 0
+             
+        if i == "":  # check for ""
+            return 0
+            
+        if int(i) > 255 or int(i) < 0: # check for 345 or -23
+            return 0
+            
+    return 1
+            
