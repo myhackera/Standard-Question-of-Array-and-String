@@ -1,3 +1,6 @@
+SOLUTION 1.)
+====================================================================>
+
 class Solution:
     def maxChunksToSorted(self, arr: List[int]) -> int:
         
@@ -12,4 +15,20 @@ class Solution:
                 cnt += 1
                 
         return cnt if cnt > 0 else 1
+        
+      
+SOLUTION 2.) 
+======================================================================>
+
+class Solution:
+    def maxChunksToSorted(self, arr: List[int]) -> int
+        
+        res = sorted(arr)
+        sum1 = sum2 = count = 0
+        for i in range(len(arr)):
+            sum1 += arr[i]
+            sum2 += res[i]
+            if sum1 == sum2:
+                count += 1 
+        return count
                            
