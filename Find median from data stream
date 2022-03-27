@@ -1,0 +1,19 @@
+from heapq import *
+class MedianFinder:
+
+    def __init__(self):
+        self.large = []
+        self.small = []
+
+    def addNum(self, num: int) -> None:
+        if len(self.large) == len(self.small): # It means len of heaps will be even so we will add element in large heap
+                                               # Understand the concept of even and odd array insertion deeply
+            heappush(self.large, -heappushpop(self.small, -num))
+        else:
+            heappush(self.small, -heappushpop(self.large, num))
+
+    def findMedian(self) -> float:
+        if len(self.large) == len(self.small):
+            return (self.large[0] - self.small[0])/2
+        else:
+            return self.large[0]
