@@ -1,0 +1,12 @@
+
+class Solution:
+    def merge(self, arr1, arr2, n, m): 
+        
+        i = 0
+        arr1.reverse()
+        while i < min(m, n) and arr1[i] > arr2[i]:
+            arr1[i], arr2[i] = arr2[i], arr1[i]
+            i += 1 
+            
+        arr1.sort()
+        arr2.sort()
