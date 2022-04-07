@@ -1,0 +1,24 @@
+def jobScheduling(jobs):
+    
+    jobs.sort(key = lambda x:x[1], reverse=True)
+    
+    n = len(jobs)
+    mx = -1000
+    for val in jobs:
+        mx = max(mx, val[0])
+    
+    arr = [0]*(mx)
+    profit = 0
+    
+    for i in range(n):
+        temp = jobs[i]
+        if not arr[temp[0]-1]:
+            arr[temp[0]-1] = 1
+            profit += temp[1]
+        else:
+            for j in range(temp[0]-1, -1, -1):
+                if not arr[j]:
+                    arr[j] = 1
+                    profit += temp[1]
+                    break
+    return profit
