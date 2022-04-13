@@ -1,0 +1,27 @@
+class Solution:
+    def findSwapValues(self,a, n, b, m):
+        
+        s1 = sum(a)
+        s2 = sum(b)
+        
+        a.sort()
+        b.sort()
+        
+        i = 0
+        j = 0
+        
+        while i < n and j < m:
+            
+            p = s1 - a[i] + b[j] # Here a[i] is getting decreased
+            q = s2 - b[j] + a[i] # Here b[j] is getting decreased
+            
+            """ so if p > q we will increase i so that p decrease  """
+            
+            
+            if p == q:
+                return 1
+            elif p > q:
+                i += 1
+            else:
+                j += 1 
+        return -1
