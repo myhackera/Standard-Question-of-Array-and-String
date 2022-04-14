@@ -1,0 +1,17 @@
+class Solution:
+    def findSubArrays(self,arr,n):
+        
+        d = { 0: 1 }
+        count = 0
+        summ = 0
+       
+        for i in range(n):
+            
+            summ += arr[i]
+            if summ in d:
+                count += d[summ]
+                d[summ] += 1
+            else:
+                d[summ] = 1
+                
+        return count
