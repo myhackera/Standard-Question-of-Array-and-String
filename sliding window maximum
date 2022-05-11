@@ -1,0 +1,21 @@
+from heapq import *
+class Solution:
+    def max_of_subarrays(self,arr,n,k):
+        
+        heap = []
+        ans = []
+        
+        for i in range(k):
+            heappush(heap, [(-1)*arr[i], i])
+        ans.append(heap[0][0]*(-1))
+        
+        for i in range(k, n):
+            heappush(heap, [(-1)*arr[i], i])
+            while True:
+                maxitem = heap[0]
+                if i - maxitem[1] > k-1:
+                    heappop(heap)
+                else:
+                    ans.append((-1)*maxitem[0])
+                    break
+        return ans
