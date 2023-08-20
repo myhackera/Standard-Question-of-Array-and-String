@@ -1,0 +1,26 @@
+
+def kadane(arr):
+    msf, meh = (-1)*maxsize, 0
+    n = len(arr)
+    for i in range(n):
+        meh += arr[i]
+        if msf < meh:
+            msf = meh
+        if meh < 0:
+            meh = 0
+    return msf
+
+
+def maxSumRectangle(arr, n, m):
+    
+    maxsum = (-1)*maxsize
+    for c in range(m):
+        a = [0]*n
+        for j in range(c, m):
+            for i in range(n):
+                a[i] += arr[i][j]
+            currsum = kadane(a)
+            maxsum = max(maxsum, currsum)
+    return maxsum
+
+TC: O(RC^2)
